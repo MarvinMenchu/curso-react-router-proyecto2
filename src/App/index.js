@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AppUI } from './AppUI';
 import { useLocalStorage } from './useLocalStorage';
 
@@ -11,17 +11,23 @@ import { useLocalStorage } from './useLocalStorage';
 // ];
 
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
-//localStorage.removeItem('TODOS_V1');
+localStorage.removeItem('TODOS_V1');
 
 function App() {
 
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error} = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   // Estados derivados, san variables calculos de un estado
   // doble negacion !! para saber que estamos trabajando con valores falso y verdadero
   const completedTodos = todos.filter(todo => !!todo.completed).length;
-  const totalTodos = todos.length; 
+  const totalTodos = todos.length;
+
+
 
   // Estado derivados
   const searchedTodos = todos.filter(
@@ -32,7 +38,7 @@ function App() {
     } 
   );
 
-  console.log("Los usuarios usan Todos de " + searchValue);
+  //console.log("Los usuarios usan Todos de " + searchValue);
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
@@ -61,6 +67,8 @@ function App() {
       searchedTodos={searchedTodos}
       completeTodo={completeTodo}
       deleteTodo={deleteTodo}
+      loading={loading}
+      error={error}
     />
   );
 }
