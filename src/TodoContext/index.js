@@ -30,6 +30,15 @@ function TodoProvider({ children }) {
     
       //console.log("Los usuarios usan Todos de " + searchValue);
     
+      const addTodo = (text) => {
+        const newTodos = [...todos];
+        newTodos.push({
+          completed: false,
+          text,
+        });
+        saveTodos(newTodos);
+      }
+
       const completeTodo = (text) => {
         const newTodos = [...todos];
         const todoIndex = newTodos.findIndex(
@@ -60,7 +69,8 @@ function TodoProvider({ children }) {
             loading,
             error,
             openModal,
-            setOpenModal
+            setOpenModal,
+            addTodo
         }}>
             {children}
         </TodoContext.Provider>
