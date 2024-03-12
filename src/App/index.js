@@ -12,6 +12,7 @@ import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
 import "../Modal/Modal.css";
 import { TodoHeader } from "../TodoHeader";
+import { EmptySearchResult } from '../EmptySearchResults';
 
 function App() {
 
@@ -42,27 +43,37 @@ function App() {
             setSearchValue={setSearchValue}
         />
       </TodoHeader>
-
-      <TodoList>
-        {loading && (
-          <>
-            <TodosLoading />
-            <TodosLoading />
-            <TodosLoading />
-          </>
-        )}
-        {error && <TodosError />}
-        {!loading && searchedTodos.length === 0 && <EmptyTodos />}
-
-        {searchedTodos.map((todo) => (
-          <TodoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)}
-          />
-        ))}
+      {/* Render Props */}
+      <TodoList
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        totalTodos={totalTodos}
+        searchText={searchValue}
+        onError={() => <TodosError />}
+        onLoading={() => <TodosLoading />}
+        onEmptyTodos={() => <EmptyTodos />}
+        onEmptySearchResult={(searchValue) => <EmptySearchResult searchText={searchValue} />}
+        render={todo => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+            />
+          )
+        }
+      >
+        {/* {todo => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+            />
+          )} */}
       </TodoList>
       <CreateTodoButton 
         setOpenModal={setOpenModal}
