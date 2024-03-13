@@ -1,30 +1,33 @@
 import {render} from 'react-dom';
 import './index.css';
-//import App from './App';
+import App from './App';
 
 const container = document.getElementById('root');
 
-function App(props) {
-    return (
-        <h1> {props.saludo}, {props.nombre}! </h1>
-    );
-    
-}
 
-function withSaludo(WrappedComponent){
-    return function WrappedComponentWithSaludo(saludo){
-        return function ComponenteDeVerdad(props){
-            return (
-                <>
-                    <WrappedComponent {...props} saludo={saludo} />
-                    <p>Estamos acompañando al WrappedComponent</p>
-                </>
-            )
-        }
-    }
-}
-
-const AppWithSaludo = withSaludo(App)("Hey");
 
 //const root = ReactDOM.createRoot(rootElement);
-render(<AppWithSaludo nombre={"Marvin"} />, container);
+render(<App />, container);
+
+
+// function App(props) {
+//     return (
+//         <h1> {props.saludo}, {props.nombre}! </h1>
+//     );
+    
+// }
+
+// function withSaludo(WrappedComponent){
+//     return function WrappedComponentWithSaludo(saludo){
+//         return function ComponenteDeVerdad(props){
+//             return (
+//                 <>
+//                     <WrappedComponent {...props} saludo={saludo} />
+//                     <p>Estamos acompañando al WrappedComponent</p>
+//                 </>
+//             )
+//         }
+//     }
+// }
+
+// const AppWithSaludo = withSaludo(App)("Hey");
