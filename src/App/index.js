@@ -13,7 +13,7 @@ import { TodoForm } from "../TodoForm";
 import "../Modal/Modal.css";
 import { TodoHeader } from "../TodoHeader";
 import { EmptySearchResult } from '../EmptySearchResults';
-import { ChangeAlertWithStorageListener } from '../ChangeAlert';
+import { ChangeAlert } from '../ChangeAlert';
 
 function App() {
 
@@ -87,7 +87,7 @@ function App() {
           setOpenModal={setOpenModal}  
         />
       </Modal>)}
-      <ChangeAlertWithStorageListener sincronize={sincronizeTodo}  />
+      <ChangeAlert sincronize={sincronizeTodo}  />
     </>
   );
 }
