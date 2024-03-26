@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/curso-react-router-proyecto2/static/css/main.e31a3d75.css",
-    "main.js": "/curso-react-router-proyecto2/static/js/main.b2cfb658.js",
+    "main.js": "/curso-react-router-proyecto2/static/js/main.ee55811b.js",
     "index.html": "/curso-react-router-proyecto2/index.html",
     "static/media/delete.svg": "/curso-react-router-proyecto2/static/media/delete.d9c7e0eeb3f573572e1521b7b69ed33e.svg",
     "static/media/edit.svg": "/curso-react-router-proyecto2/static/media/edit.7eac1f1eccbed1558e2529b2ae9dd40f.svg",
     "static/media/check.svg": "/curso-react-router-proyecto2/static/media/check.af03c9a6a0411e40578874e6f00e807b.svg",
     "main.e31a3d75.css.map": "/curso-react-router-proyecto2/static/css/main.e31a3d75.css.map",
-    "main.b2cfb658.js.map": "/curso-react-router-proyecto2/static/js/main.b2cfb658.js.map"
+    "main.ee55811b.js.map": "/curso-react-router-proyecto2/static/js/main.ee55811b.js.map"
   },
   "entrypoints": [
     "static/css/main.e31a3d75.css",
-    "static/js/main.b2cfb658.js"
+    "static/js/main.ee55811b.js"
   ]
 }
