@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Link del despliegue de la aplicaciom
 https://marvinmenchu.github.io/curso-react-intro/
 
@@ -79,3 +80,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# curso-react-router-proyecto2
+>>>>>>> 1fc56b67edc8b1f0761b66fce0c107189d5faf3c
