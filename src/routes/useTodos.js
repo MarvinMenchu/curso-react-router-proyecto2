@@ -9,9 +9,9 @@ function useTodos(props) {
         loading,
         error,
         sincronizeItem: sincronizeTodo
-      } = useLocalStorage('TODOS_V1', []);
+      } = useLocalStorage('TODOS_V2', []);
       const [searchValue, setSearchValue] = React.useState('');
-      const [openModal, setOpenModal] = React.useState(false);
+      // const [openModal, setOpenModal] = React.useState(false);
     
       // Estados derivados, san variables calculos de un estado
       // doble negacion !! para saber que estamos trabajando con valores falso y verdadero
@@ -30,28 +30,45 @@ function useTodos(props) {
     
       //console.log("Los usuarios usan Todos de " + searchValue);
     
+      const getTodo = (id) => {
+        const todoIndex = todos.findIndex(todo => todo.id === id);
+        console.log(todos[todoIndex]);
+        return todos[todoIndex];
+      }
+
       const addTodo = (text) => {
+        const id = newTodoId(todos);
         const newTodos = [...todos];
         newTodos.push({
           completed: false,
           text,
+          id
         });
         saveTodos(newTodos);
       }
 
-      const completeTodo = (text) => {
+      const completeTodo = (id) => {
         const newTodos = [...todos];
         const todoIndex = newTodos.findIndex(
-          (todo) => todo.text === text
+          (todo) => todo.id === id
         )
         newTodos[todoIndex].completed = true;
         saveTodos(newTodos);
       }
-    
-      const deleteTodo = (text) => {
+
+      const editTodo = (id, newText) => {
         const newTodos = [...todos];
         const todoIndex = newTodos.findIndex(
-          (todo) => todo.text === text
+          (todo) => todo.id === id
+        )
+        newTodos[todoIndex].text = newText;
+        saveTodos(newTodos);
+      }
+    
+      const deleteTodo = (id) => {
+        const newTodos = [...todos];
+        const todoIndex = newTodos.findIndex(
+          (todo) => todo.id === id
         )
         newTodos.splice(todoIndex, 1);
         saveTodos(newTodos);
@@ -64,22 +81,33 @@ function useTodos(props) {
       completedTodos,
       searchValue,
       searchedTodos,
-      openModal
+      // openModal
+      getTodo
     }
 
     const updaters = {
       setSearchValue,
       completeTodo,
       deleteTodo,
-      setOpenModal,
+      // setOpenModal,
       addTodo,
-      sincronizeTodo
+      sincronizeTodo,
+      editTodo
     };
 
   return {
     state,
     updaters
   }
+}
+
+function newTodoId(todoList) {
+  if (!todoList.length){
+    return 1
+  }
+  const idList = todoList.map(todo => todo.id)
+  const idMax = Math.max(...idList)
+  return idMax + 1
 }
 
 

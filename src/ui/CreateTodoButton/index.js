@@ -1,6 +1,6 @@
 import './CreateTodoButton.css';
 
-function CreateTodoButton({ setOpenModal }) {
+function CreateTodoButton(props) {
   return (
     <button
       className="CreateTodoButton"
@@ -8,9 +8,10 @@ function CreateTodoButton({ setOpenModal }) {
         // console.log('le diste clic');
         // console.log(event);
         // console.log(event.target);
-        () => {
-          setOpenModal(state => !state);
-        }
+        // () => {
+        //   setOpenModal(state => !state);
+        // }
+        props.onClick
       }
       >+</button>
   )
